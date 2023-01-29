@@ -20,9 +20,11 @@ export const HeaderContent = styled.div`
   @media (max-width: 768px) {
     padding-top: 0;
     height: 10.5rem;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 1rem;
+
     img{
-      max-width: 50%;
+      max-width: 30%;
     }
   }
 `
