@@ -1,8 +1,8 @@
 import { ProfileContainer, ProfileContainerImg, ProfileContent, ProfileContentText, ProfileGit, ProfileItem, ProfileItemContainer } from './style';
-import github from '../../assets/github.svg'
-import building from '../../assets/building.svg'
-import user from '../../assets/user-group.svg'
-import arrow from '../../assets/arrow-up.svg'
+import github from '../../../../assets/github.svg'
+import building from '../../../../assets/building.svg'
+import user from '../../../../assets/user-group.svg'
+import arrow from '../../../../assets/arrow-up.svg'
 
 export function Profile(){
     return(
