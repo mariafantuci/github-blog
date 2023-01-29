@@ -21,7 +21,7 @@ export const SearchFormContainer = styled.form`
     }
   }
 
-  div{
+  div {
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -35,8 +35,8 @@ export const ProfileContainerImg = styled.div`
 export const ProfileContent = styled.div`
   display: flex;
   flex-direction: column;
-  
-  p{
+
+  p {
     font-size: 1rem;
     line-height: 1.6rem;
     margin-bottom: 1.5rem;
@@ -49,7 +49,7 @@ export const ProfileGit = styled.button`
   gap: 0.5rem;
   background: transparent;
   border: none;
-  color: ${(props) => props.theme['blue']};
+  color: ${(props) => props.theme.blue};
   align-items: center;
   border-bottom: 1px solid transparent;
 
@@ -58,8 +58,8 @@ export const ProfileGit = styled.button`
     width: 12px;
   }
 
-  &:hover{
-    border-bottom: 1px solid ${(props) => props.theme['blue']};
+  &:hover {
+    border-bottom: 1px solid ${(props) => props.theme.blue};
   }
 `
 
@@ -69,8 +69,8 @@ export const ProfileContentText = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  
-  h1{
+
+  h1 {
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 1.95rem;
@@ -95,18 +95,18 @@ export const ProfileItem = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  
+
   img {
     height: 18px;
     width: 18px;
   }
 
-  span{
+  span {
     font-size: 1rem;
     line-height: 1.6rem;
     color: ${(props) => props.theme['base-subtitle']};
   }
-  
+
   @media (max-width: 768px) {
     justify-content: flex-start;
   }

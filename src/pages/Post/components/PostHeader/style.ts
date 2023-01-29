@@ -26,23 +26,23 @@ export const PostHeaderContentLinkItem = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  
+
   gap: 0.5rem;
-  color: ${(props) => props.theme['blue']};
+  color: ${(props) => props.theme.blue};
   border-bottom: 1px solid transparent;
   text-transform: uppercase;
-  
-  span{
+
+  span {
     font-size: 0.75rem;
     line-height: 1.2rem;
   }
 
-  img{
+  img {
     width: 12px;
     height: 12px;
   }
-  &:hover{
-    border-bottom: 1px solid ${(props) => props.theme['blue']};
+  &:hover {
+    border-bottom: 1px solid ${(props) => props.theme.blue};
   }
 `
 
@@ -53,7 +53,7 @@ export const PostHeaderContent = styled.div`
   gap: 2rem;
   margin-top: 0.5rem;
 
-  div{
+  div {
     display: flex;
     flex-direction: row;
     gap: 0.5rem;

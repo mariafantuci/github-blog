@@ -1,4 +1,9 @@
-import { HeaderContainer, HeaderContent, HeaderEffectLeft, HeaderEffectRight } from './style'
+import {
+  HeaderContainer,
+  HeaderContent,
+  HeaderEffectLeft,
+  HeaderEffectRight,
+} from './style'
 import logo from '../../assets/logo.svg'
 
 export function Header() {

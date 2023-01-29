@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
-  background: linear-gradient(180deg, #040F1A, #1C2F41);
+  background: linear-gradient(180deg, #040f1a, #1c2f41);
   display: flex;
   flex-direction: row;
 `
@@ -21,13 +21,13 @@ export const HeaderContent = styled.div`
     align-items: flex-start;
     padding-top: 1rem;
 
-    img{
+    img {
       max-width: 30%;
     }
   }
 `
 
-export const HeaderEffectLeft= styled.div`
+export const HeaderEffectLeft = styled.div`
   width: 50%;
   height: auto;
   background-image: url('/src/assets/effect.svg');
@@ -40,13 +40,13 @@ export const HeaderEffectLeft= styled.div`
   }
 `
 
-export const HeaderEffectRight= styled.div`
+export const HeaderEffectRight = styled.div`
   width: 50%;
   height: auto;
   background-image: url('/src/assets/effect.svg');
   margin: 1.875rem 0 1.875rem;
   background-repeat: no-repeat;
-  
+
   @media (max-width: 768px) {
     width: 30%;
     margin: 1rem 0 0 0;

@@ -1,7 +1,7 @@
 export const defaultTheme = {
-  'white': '#fff',
-  'black': '#000',
-  'blue': '#3294F8',
+  white: '#fff',
+  black: '#000',
+  blue: '#3294F8',
 
   'base-title': '#E7EDF4',
   'base-subtitle': '#C4D4E3',
@@ -13,5 +13,4 @@ export const defaultTheme = {
   'base-profile': '#0B1B2B',
   'base-background': '#071422',
   'base-input': '#040F1A',
-  
 } as const

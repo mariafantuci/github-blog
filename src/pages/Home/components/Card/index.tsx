@@ -1,4 +1,4 @@
-import { CardContainer } from './style';
+import { CardContainer } from './style'
 
 export function Card() {
   return (
@@ -8,7 +8,11 @@ export function Card() {
         <span>Há 1 dia</span>
       </div>
       <p>
-        Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
+        Programming languages all have built-in data structures, but these often
+        differ from one language to another. This article attempts to list the
+        built-in data structures available in JavaScript and what properties
+        they have. These can be used to build other data structures. Wherever
+        possible, comparisons with other languages are drawn.
       </p>
     </CardContainer>
   )
