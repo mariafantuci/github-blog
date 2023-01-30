@@ -35,7 +35,7 @@ export const ProfileContainerImg = styled.div`
 export const ProfileContent = styled.div`
   display: flex;
   flex-direction: column;
-
+  width: 100%;
   p {
     font-size: 1rem;
     line-height: 1.6rem;
@@ -46,13 +46,16 @@ export const ProfileContent = styled.div`
 export const ProfileGit = styled.button`
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 0.5rem;
   background: transparent;
   border: none;
   color: ${(props) => props.theme.blue};
-  align-items: center;
   border-bottom: 1px solid transparent;
-
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.2rem;
   img {
     height: 12px;
     width: 12px;
@@ -76,6 +79,12 @@ export const ProfileContentText = styled.div`
     line-height: 1.95rem;
     margin-bottom: 0.5rem;
     color: ${(props) => props.theme['base-title']};
+    text-transform: capitalize;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+    background: inherit;
   }
 `
 
