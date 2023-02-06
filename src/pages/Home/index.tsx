@@ -5,6 +5,7 @@ import { SearchForm } from './components/SearchForm'
 import { HomeCardContainer, HomeContainer } from './style'
 import { useCallback, useEffect, useState } from 'react';
 import { api } from '../../lib/axios';
+import { NavLink } from 'react-router-dom';
 
 interface RepositoryType {
   title: string;
@@ -18,35 +19,41 @@ interface RepositoryType {
   };
 }
 
-const repo = 'mariafantuci/github-blog';
-const userName = 'mariafantuci';
-
 export function Home() {
   const [repositories, setRepositories] = useState<RepositoryType[]>([]);
 
   const getRepositories = useCallback(
-    async (repoName: string, userName: string, query?: string) => {
+    async (query?: string) => {
+      const repoName = 'github-blog';
+      const userName = 'mariafantuci';
       try {
-        const response = await api.get(`/search/issues?q=${query}%20label:published%20repo:${userName}/${repoName}`, {})
+        const response = await api.get(`repos/${userName}/${repoName}/issues`, {
+          params: {
+            q: query
+          }
+        })
         setRepositories(response.data);
       } catch (error) {
         console.log('Eita Giovana o Forninho caiu hahahaha')
       }
     }, []
   )
-
+  
   useEffect(() => {
-    getRepositories(repo, userName)
+    getRepositories()
   }, [getRepositories]);
   console.log('repository', repositories)
+  
   return (
     <HomeContainer>
       <Profile />
-      <SearchForm />
+      <SearchForm getRespo={getRepositories}/>
       <HomeCardContainer>
         {repositories.map(repo => {
           return (
-              <Card key={repo.id} repository={repo}/>
+            <NavLink key={repo.number} to={'/post?id='+ repo.number}>
+              <Card repository={repo}/>
+            </NavLink>
           )
         })}
       

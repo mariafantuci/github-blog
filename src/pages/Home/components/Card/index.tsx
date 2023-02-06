@@ -2,7 +2,6 @@
 import { CardContainer } from './style'
 interface RepositoryType {
   repository: {
-    id: number;
     title: string;
     created_at: string;
     body: string;

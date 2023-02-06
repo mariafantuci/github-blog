@@ -2,8 +2,11 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
   width: 50%;
-  margin: 0 auto;
-
+  margin: 0 auto 4rem auto;
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
   @media (max-width: 768px) {
     width: 90%;
   }
