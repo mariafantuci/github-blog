@@ -13,41 +13,11 @@ import github from '../../../../assets/github.svg'
 import building from '../../../../assets/building.svg'
 import user from '../../../../assets/user-group.svg'
 import arrow from '../../../../assets/arrow-up.svg'
-import { useCallback, useEffect, useState } from 'react'
-import { api } from '../../../../lib/axios'
-
-interface ProfileType {
-  name: string;
-  login: string;
-  bio: string;
-  followers: number;
-  avatar_url: string;
-  html_url: string;
-  company?: string;
-}
-
-const userName = 'mariafantuci';
+import { useContext } from 'react'
+import { GithubContext } from '../../../../contexts/GitHubContext'
 
 export function Profile() {
-  const [profile, setProfile] = useState<ProfileType>(
-    {} as ProfileType
-  );
-
-  const getProfile = useCallback(
-    async (username: string) => {
-      try {
-        const response = await api.get(`/users/${username}`, {})
-        setProfile(response.data);
-      } catch (error) {
-        console.log('Eita Giovana o Forninho caiu hahahaha')
-      }
-    }, []
-  )
-
-  useEffect(() => {
-    getProfile(userName)
-  }, [getProfile]);
-
+  const { profile } = useContext(GithubContext);
   return (
     <ProfileContainer>
       <ProfileContainerImg>

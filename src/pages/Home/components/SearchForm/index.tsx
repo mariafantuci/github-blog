@@ -9,10 +9,8 @@ const searchFormSchema = z.object({
 })
 
 type SearchFormInputs = z.infer<typeof searchFormSchema>
-interface SearchFormProps{
-  getRespo: (query?: string) => Promise<void>
-}
-export function SearchForm({ getRespo }: SearchFormProps) {
+
+export function SearchForm() {
   const {
     register,
     handleSubmit,
@@ -21,7 +19,7 @@ export function SearchForm({ getRespo }: SearchFormProps) {
   })
 
   async function handleSearchIssues(data: SearchFormInputs) {
-    await getRespo(data.query)
+    console.log(data.query)
   }
   return (
     <SearchFormContainer onSubmit={handleSubmit(handleSearchIssues)}>
