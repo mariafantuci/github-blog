@@ -27,35 +27,53 @@ export function Home() {
       const repoName = 'github-blog';
       const userName = 'mariafantuci';
       try {
-        const response = await api.get(`repos/${userName}/${repoName}/issues`, {
-          params: {
-            q: query
-          }
-        })
-        setRepositories(response.data);
+        let url = `repos/${userName}/${repoName}/issues`
+        if(query) {
+          url = `/search/issues?q=${query}repo:${userName}/${repoName}`
+        }
+        const response = await api.get(url, {})
+        if(query){
+          setRepositories(response.data.items);
+        }else{
+          setRepositories(response.data);
+        }        
       } catch (error) {
-        console.log('Eita Giovana o Forninho caiu hahahaha')
+        console.log('Error', error)
       }
     }, []
   )
-  
+
+  async function handleFormSubmit(query: string){
+    await getRepositories(query)
+  }
+
+  async function cleanSearchInput(){
+    await getRepositories()
+  }
+
   useEffect(() => {
     getRepositories()
   }, [getRepositories]);
-  console.log('repository', repositories)
+
   
   return (
     <HomeContainer>
       <Profile />
-      <SearchForm getRespo={getRepositories}/>
+      <SearchForm 
+        getSearchValue={handleFormSubmit}
+        cleanSearchInput={cleanSearchInput}
+      />
       <HomeCardContainer>
-        {repositories.map(repo => {
-          return (
-            <NavLink key={repo.number} to={'/post?id='+ repo.number}>
-              <Card repository={repo}/>
-            </NavLink>
-          )
-        })}
+        {
+          repositories.length > 0 &&
+          repositories.map(repo => {
+            return (
+              <NavLink key={repo.number} to={'/post?id='+ repo.number}>
+                <Card repository={repo}/>
+              </NavLink>
+            )
+          })
+        }
       
       </HomeCardContainer>
     </HomeContainer>
