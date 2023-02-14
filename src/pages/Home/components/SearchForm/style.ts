@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 
 export const SearchFormContainer = styled.form`
@@ -12,12 +13,15 @@ export const SearchFormContainer = styled.form`
     border-radius: 6px;
     border: 0;
     background: ${(props) => props.theme['base-input']};
-    color: ${(props) => props.theme['base-border']};
+    color: ${(props) => props.theme['base-label']};
     border: 1px solid ${(props) => props.theme['base-border']};
     padding: 1rem;
 
     &::placeholder {
       color: ${(props) => props.theme['base-label']};
+    }
+    &:focus {
+      color: ${(props) => props.theme['base-text']};
     }
   }
 
@@ -37,6 +41,26 @@ export const SearchFormContainer = styled.form`
       line-height: 1.4rem;
       font-size: 0.875rem;
       color: ${(props) => props.theme['base-span']};
+    }
+  }
+`
+export const InputContainer = styled.div`
+  position: relative; 
+  width: 100%;
+ 
+  
+  button{
+    background: transparent;
+    border: none;
+    position: absolute;
+    top: calc(110% - 75%);
+    right: 10px;
+    svg{
+      color: ${(props) => props.theme['base-label']};
+    }
+    
+    &:focus {
+      color: ${(props) => props.theme['base-text']};
     }
   }
 `
