@@ -47,7 +47,7 @@ export function Profile() {
   useEffect(() => {
     getProfile(userName)
   }, [getProfile]);
-  console.log('profile',profile)
+
   return (
     <>
     {
