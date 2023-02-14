@@ -1,28 +1,61 @@
 /* eslint-disable prettier/prettier */
+import { useCallback, useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { api } from '../../lib/axios'
 import { PostHeader } from './components/PostHeader'
+import { PostContent } from './components/PostHeader/style';
 import { PostContainer } from './style'
 
+interface IssueGitType {
+  title: string;
+  body: string;
+  created_at: string;
+  number: number;
+  html_url: string;
+  comments: number;
+  user: {
+    login: string;
+  };
+}
+
 export function Post() {
+  const queryString = window.location.search
+  const urlParams = new URLSearchParams(queryString)
+  const issueNumber = urlParams.get('id')
+
+  if(!issueNumber){
+    window.location.href = window.location.origin
+  }
+
+  const [issueGit, setIssueGit] = useState({} as IssueGitType);
+
+  const getIssue = useCallback(
+    async (id: string) => {
+      const repoName = 'github-blog';
+      const userName = 'mariafantuci';
+      try {
+        const response = await api.get(`repos/${userName}/${repoName}/issues/${id}`, {})
+        setIssueGit(response.data);      
+      } catch (error) {
+        console.log('Error', error)
+      }
+    }, []
+  )
+
+  useEffect(() => {
+    getIssue(issueNumber!)
+  }, []);
+  
   return (
     <PostContainer>
-      <PostHeader />
-      <div className="">
-        <p>
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in JavaScript and what
-          properties they have. These can be used to build other data
-          structures. Wherever possible, comparisons with other languages are
-          drawn.
-        </p>
-        <p>
-          Dynamic typing JavaScript is a loosely typed and dynamic language.
-          Variables in JavaScript are not directly associated with any
-          particular value type, and any variable can be assigned (and
-          re-assigned) values of all types:
-        </p>
-        <div></div>
-      </div>
+      {Object.keys(issueGit).length !== 0  && <PostHeader post={issueGit}/> }
+      <PostContent>
+        {Object.keys(issueGit).length !== 0  && 
+          <ReactMarkdown>
+            {issueGit.body}
+          </ReactMarkdown>
+        }
+      </PostContent>
     </PostContainer>
   )
 }
