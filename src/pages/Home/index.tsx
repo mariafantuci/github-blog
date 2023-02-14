@@ -6,6 +6,7 @@ import { HomeCardContainer, HomeContainer } from './style'
 import { useCallback, useEffect, useState } from 'react';
 import { api } from '../../lib/axios';
 import { NavLink } from 'react-router-dom';
+import { repoName, userName } from '../../context/GitHubAccount';
 
 interface RepositoryType {
   title: string;
@@ -24,8 +25,6 @@ export function Home() {
 
   const getRepositories = useCallback(
     async (query?: string) => {
-      const repoName = 'github-blog';
-      const userName = 'mariafantuci';
       try {
         let url = `repos/${userName}/${repoName}/issues`
         if(query) {

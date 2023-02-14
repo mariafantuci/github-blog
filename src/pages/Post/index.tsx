@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { useCallback, useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { repoName, userName } from '../../context/GitHubAccount';
 import { api } from '../../lib/axios'
 import { PostHeader } from './components/PostHeader'
 import { PostContent } from './components/PostHeader/style';
@@ -31,8 +32,6 @@ export function Post() {
 
   const getIssue = useCallback(
     async (id: string) => {
-      const repoName = 'github-blog';
-      const userName = 'mariafantuci';
       try {
         const response = await api.get(`repos/${userName}/${repoName}/issues/${id}`, {})
         setIssueGit(response.data);      
