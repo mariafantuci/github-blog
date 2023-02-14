@@ -53,7 +53,7 @@ export function Home() {
 
   useEffect(() => {
     getRepositories()
-  }, [getRepositories]);
+  }, []);
 
   
   return (
