@@ -1,8 +1,8 @@
+/* eslint-disable prettier/prettier */
 import {
   PostHeaderContainer,
   PostHeaderContent,
   PostHeaderContentLink,
-  PostHeaderContentLinkItem,
 } from './style'
 import chevron from '../../../../assets/chevron.svg'
 import arrow from '../../../../assets/arrow-up.svg'
@@ -10,34 +10,50 @@ import arrow from '../../../../assets/arrow-up.svg'
 import github from '../../../../assets/github.svg'
 import calendar from '../../../../assets/calendar.svg'
 import comment from '../../../../assets/comment.svg'
+import { NavLink } from 'react-router-dom'
+import { dateFormatter } from '../../../../utils/formatter'
 
-export function PostHeader() {
+interface PostHeaderType {
+  post: {
+    title: string
+    body: string
+    created_at: string
+    number: number
+    html_url: string
+    comments: number
+    user: {
+      login: string
+    }
+  }
+}
+
+export function PostHeader({ post }: PostHeaderType) {
   return (
     <PostHeaderContainer>
       <PostHeaderContentLink>
-        <PostHeaderContentLinkItem>
+        <NavLink to="/" title="voltar">
           <img src={chevron} alt="" />
           <span>voltar</span>
-        </PostHeaderContentLinkItem>
-        <PostHeaderContentLinkItem>
+        </NavLink>
+        <NavLink to={post.html_url} title={post.title}>
           <span>ver no github</span>
           <img src={arrow} alt="" />
-        </PostHeaderContentLinkItem>
+        </NavLink>
       </PostHeaderContentLink>
       <div className="">
-        <h1>JavaScript data types and data structures</h1>
+        <h1>{post.title}</h1>
         <PostHeaderContent>
           <div className="">
             <img src={github} alt="" />
-            <span>ellie</span>
+            <span>{post.user.login}</span>
           </div>
           <div className="">
             <img src={calendar} alt="" />
-            <span>Há 1 dia</span>
+            <span>{dateFormatter.format(new Date(post.created_at))}</span>
           </div>
           <div className="">
             <img src={comment} alt="" />
-            <span>5 comentários</span>
+            <span>{post.comments} comentários</span>
           </div>
         </PostHeaderContent>
       </div>
