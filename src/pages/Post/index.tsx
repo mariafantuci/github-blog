@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { PostHeader } from './components/PostHeader'
 import { PostContainer } from './style'
 
